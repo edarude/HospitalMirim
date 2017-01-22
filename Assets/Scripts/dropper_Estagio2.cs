@@ -5,14 +5,15 @@ using UnityEngine.UI;
 
 /*
 	Sequencia correta dos procedimentos: 
-•	Aplicação do garrote no paciente
-•	Aplicação do algodão no álcool para esterilização
-•	Aplicação do algodão com álcool no paciente
-•	Preenchimento da seringa com o medicamento
-•	Aplicação da seringa com medicamento no paciente
-•	Remoção do garrote
-•	Remoção da seringa
-•	Aplicação do curativo
+0	Aplicação do garrote no paciente						aplica garrote
+1	Aplicação do algodão no álcool para esterilização		algodão no alcool
+2	Aplicação do algodão com álcool no paciente				algodão com alcool no urso
+3	Preenchimento da seringa com o medicamento				seringa no medicamento
+4	Aplicação da seringa com medicamento no paciente		seringa com medicamento no urso
+5	Remoção do garrote										remover garrote
+6	Remoção da seringa										aplicar medicamento
+7	Aplicação do curativo									remover seringa
+8															aplicar curativo
 
 	index
 	0 garrote
@@ -41,9 +42,6 @@ public class dropper_Estagio2 : MonoBehaviour, IDropHandler {
 	public int PontuacaoTotal = 0;
 
 	public int procedimentoAtual = 0;
-
-	//Objetos utilizados no jogo
-	//refinar
 
 	//pontuação maxima por procedimento
 	public int pontuacaoMaxima = 40;
@@ -142,13 +140,17 @@ public class dropper_Estagio2 : MonoBehaviour, IDropHandler {
 			if (eventData.pointerDrag.GetComponent<draghandeler> ().index == 4 && procedimentoAtual == 4){
 				Debug.Log("Seringa com remedio arrastado para o urso");
 				procedimentoAtual++;
+				//Não reproduzir a animação enquanto não for removido o garrote
+				//POG: Foi reproduzida uma animação com -0.0000001 segundos (Somente pra se iniciar a animação ao contrário);
+				//EU NÃO AGUENTO MAIS
+				//Para se reproduzir a animação utilizar: seringa.GetComponent<Animator> ().SetBool ("Medicando", true);
 				seringa.SetActive(true);
 				seringa.GetComponent<BoxCollider>().enabled = false;
 				RetornaPontuacaoPorEtapa ();
 				ReferenciaDialogos.ReferenciaParaPularDeDialogo();
 			}
 
-			if (eventData.pointerDrag.GetComponent<draghandeler> ().index == 7 && procedimentoAtual == 7) {
+			if (eventData.pointerDrag.GetComponent<draghandeler> ().index == 8 && procedimentoAtual == 8) {
 				Debug.Log("Curativo arrastado para o urso");
 				procedimentoAtual++;
 				ReferenciaDialogos.botaoDePlacar.SetActive(true);
