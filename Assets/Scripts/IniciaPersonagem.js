@@ -9,6 +9,7 @@ var medico5 : GameObject;
 
 var paciente0 : GameObject;
 var paciente1 : GameObject;
+var paciente2: GameObject;
 
 var medicoSelecionado : int = 0;
 var pacienteSelecionado : int = 0;
@@ -27,6 +28,7 @@ function Awake () {
 
 	paciente0 = GameObject.Find("Urso");
 	paciente1 = GameObject.Find("Boneca");
+	paciente2 = GameObject.Find("robo");
 
 	if(medicoSelecionado == 0){
 		medico0.SetActive(true);
@@ -75,8 +77,14 @@ function Awake () {
 	if(pacienteSelecionado == 0){
 		paciente0.SetActive(true);
 		paciente1.SetActive(false);
+		paciente2.SetActive(false);
 	}else if(pacienteSelecionado == 1){
 		paciente0.SetActive(false);
 		paciente1.SetActive(true);
+		paciente2.SetActive(false);
+	}else if(pacienteSelecionado == 2){
+	    paciente0.SetActive(false);
+	    paciente1.SetActive(false);
+	    paciente2.SetActive(true);
 	}
 }

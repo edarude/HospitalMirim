@@ -28,12 +28,13 @@ function Start () {
 //	painelDeProcedimentos.SetActive(false);
 	QualitySettings.vSyncCount = 0;
 
-	this.colisorDePacientes = [
+	colisorDePacientes = [
 			GameObject.Find("paciente0").GetComponent.<BoxCollider>(),
-			GameObject.Find("paciente1").GetComponent.<BoxCollider>()
+			GameObject.Find("paciente1").GetComponent.<BoxCollider>(),
+			GameObject.Find("paciente2").GetComponent.<BoxCollider>()
 	];
 	
-	this.jalecos = [	
+	jalecos = [	
 			GameObject.Find("jaleco0").GetComponent.<SkinnedMeshRenderer>(),  	//jaleco do medico 0
 			GameObject.Find("jaleco1").GetComponent.<SkinnedMeshRenderer>(),  	//jaleco do medico 1
 			GameObject.Find("jaleco2").GetComponent.<SkinnedMeshRenderer>(),	//jaleco do medico 2
@@ -42,9 +43,10 @@ function Start () {
 			GameObject.Find("jaleco5").GetComponent.<SkinnedMeshRenderer>()  	//jaleco do medico 5
 	];
 
-	this.setaPacientes = [
+	setaPacientes = [
 		GameObject.Find("seta0").GetComponent.<MeshRenderer>(),
-		GameObject.Find("seta1").GetComponent.<MeshRenderer>()
+		GameObject.Find("seta1").GetComponent.<MeshRenderer>(),
+		GameObject.Find("seta2").GetComponent.<MeshRenderer>()
 	];
 	
 	selecionadoMedico = -1;
